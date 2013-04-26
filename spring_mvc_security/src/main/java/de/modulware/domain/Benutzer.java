@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -104,7 +105,7 @@ public class Benutzer implements Serializable {
 		this.traeger = traeger;
 	}
 
-	@OneToMany(mappedBy="benutzer")
+	@OneToMany(mappedBy="benutzer", fetch=FetchType.EAGER)
 	public Set<BenutzerKitaRecht> getPermissions() {
 		return permissions;
 	}

@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,15 @@ public class KitaDao {
 		return entityManager.find(Kita.class, id);
 	}
 	
+	@PostFilter("hasPermission(filterObject, 'READ')")
 	@SuppressWarnings("unchecked")
-	public List<Kita> getKitasWithKinder() {
+	public List<Kita> getKitasWithKinderForRead() {
+		return entityManager.createQuery("select distinct p from Kita p join fetch p.kinder").getResultList();
+	}
+
+	@PostFilter("hasPermission(filterObject, 'WRITE')")
+	@SuppressWarnings("unchecked")
+	public List<Kita> getKitasWithKinderForWrite() {
 		return entityManager.createQuery("select distinct p from Kita p join fetch p.kinder").getResultList();
 	}
 	

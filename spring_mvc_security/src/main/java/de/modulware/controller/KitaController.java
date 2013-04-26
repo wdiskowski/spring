@@ -27,9 +27,11 @@ public class KitaController {
 	public ModelAndView listKitas() {
 		logger.debug("Received request to list kitas");
 		ModelAndView mav = new ModelAndView();
-		List<Kita> kitas = kitaDao.getKitasWithKinder();
-		logger.debug("Kita Listing count = "+kitas.size());
-		mav.addObject("kitas",kitas);
+		List<Kita> kitasForRead = kitaDao.getKitasWithKinderForRead();
+		List<Kita> kitasForWrite = kitaDao.getKitasWithKinderForWrite();
+		logger.debug("Kita Listing count = "+ (kitasForRead.size() + kitasForWrite.size()));
+		mav.addObject("kitasForRead", kitasForRead);
+		mav.addObject("kitasForWrite", kitasForWrite);
 		mav.setViewName("list");
 		return mav;
 		

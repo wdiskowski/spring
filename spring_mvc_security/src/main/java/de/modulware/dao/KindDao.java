@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +22,13 @@ public class KindDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public Kind find(Long id) {
+	@PostAuthorize("hasPermission(returnObject, 'WRITE')")
+	public Kind findForWrite(Long id) {
+		return entityManager.find(Kind.class, id);
+	}
+
+	@PostAuthorize("hasPermission(returnObject, 'READ')")
+	public Kind findForRead(Long id) {
 		return entityManager.find(Kind.class, id);
 	}
 	
@@ -29,6 +37,7 @@ public class KindDao {
 		return entityManager.createQuery("select p from Kind p").getResultList();
 	}
 	
+	@PreAuthorize("hasPermission(#kind, 'WRITE')")
 	@Transactional
 	public Kind save(Kind kind) {
 		logger.info("save Kind " + kind);

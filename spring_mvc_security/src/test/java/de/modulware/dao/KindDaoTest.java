@@ -51,7 +51,7 @@ public class KindDaoTest {
 	@Test
 	public void shouldLoadAKind() {
 		Long template = dataInitializer.kindIds.get(0);
-		Kind p = kindDao.find(template);
+		Kind p = kindDao.findForWrite(template);
 
 		Assert.assertNotNull("Kind not found!", p);
 		Assert.assertEquals(template, p.getId());

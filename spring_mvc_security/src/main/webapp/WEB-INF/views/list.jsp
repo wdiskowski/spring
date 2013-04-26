@@ -6,12 +6,21 @@
 </head>
 <body>
 <h1>Listing Kinder</h1>
-<c:forEach items="${kitas}" var="v_kita">
+<c:forEach items="${kitasForWrite}" var="v_kita">
 	${v_kita.name}
 	<br />
 	<c:forEach items="${v_kita.kinder}" var="v_kind">
 		<a style="padding-left: 10px" href="../kind/edit?id=${v_kind.id}">${v_kind.id} -
 		${v_kind.firstName} ${v_kind.lastName}</a>
+		<br />
+	</c:forEach>
+</c:forEach>
+<c:forEach items="${kitasForRead}" var="v_kita">
+	${v_kita.name}
+	<br />
+	<c:forEach items="${v_kita.kinder}" var="v_kind">
+		<span style="padding-left: 10px">${v_kind.id} -
+		${v_kind.firstName} ${v_kind.lastName}</span>
 		<br />
 	</c:forEach>
 </c:forEach>

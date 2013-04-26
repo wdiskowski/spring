@@ -46,10 +46,10 @@ public class KindController {
  		if (id == null) {
  			kind = new Kind();
  		} else {
- 			kind = kindDao.find(id);
+ 			kind = kindDao.findForWrite(id);
  		}
  		
- 		mav.addObject("kind", kind).addObject("kitas", kitaDao.getKitas());
+ 		mav.addObject("kind", kind).addObject("kitas", kitaDao.getKitasWithKinderForWrite());
 		return mav;
 		
 	}

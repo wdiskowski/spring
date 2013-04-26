@@ -1,5 +1,5 @@
 package de.modulware.domain;
 
-public enum Permission {
+public enum PermissionType {
 	READ, WRITE
 }

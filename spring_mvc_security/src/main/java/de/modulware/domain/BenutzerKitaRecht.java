@@ -24,7 +24,7 @@ public class BenutzerKitaRecht {
 	
 	private Kita kita;
 	
-	private Permission recht;
+	private PermissionType recht;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,11 +57,11 @@ public class BenutzerKitaRecht {
 	}
 
 	@Enumerated(EnumType.STRING)
-	public Permission getRecht() {
+	public PermissionType getRecht() {
 		return recht;
 	}
 
-	public void setRecht(Permission recht) {
+	public void setRecht(PermissionType recht) {
 		this.recht = recht;
 	}
 	
