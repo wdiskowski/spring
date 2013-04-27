@@ -12,6 +12,8 @@
 	<filter-mapping>
 	        <filter-name>springSecurityFilterChain</filter-name>
 	        <url-pattern>/spring/*</url-pattern>
+	        <url-pattern>/traeger1/spring/*</url-pattern>
+	        <url-pattern>/traeger2/spring/*</url-pattern>
 	</filter-mapping>
 
 	<!-- The definition of the Root Spring Container shared by all Servlets 
@@ -42,8 +44,7 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/spring/*</url-pattern>
+		<url-pattern>/traeger1/spring/*</url-pattern>
+		<url-pattern>/traeger2/spring/*</url-pattern>
 	</servlet-mapping>
-
-
-
 </web-app>

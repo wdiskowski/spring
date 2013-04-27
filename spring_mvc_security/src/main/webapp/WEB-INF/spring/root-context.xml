@@ -10,11 +10,12 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 				
-	<import resource="db.xml" />
+	<import resource="db-multiple-ds.xml" />
 	<import resource="spring-security.xml" />
 	
 	<context:component-scan base-package="de.modulware.dao" />
 	<context:component-scan base-package="de.modulware.service" />
+	<context:component-scan base-package="de.modulware.filter" />
 	
 	<tx:annotation-driven />		 
 	

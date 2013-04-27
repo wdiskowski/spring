@@ -11,7 +11,6 @@ create table Benutzer (
 	lastName varchar(255), 
 	password varchar(255), 
 	role varchar(255), 
-	traeger varchar(255), 
 	primary key (id)
 );
 

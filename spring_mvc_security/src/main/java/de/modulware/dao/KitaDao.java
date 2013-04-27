@@ -28,13 +28,13 @@ public class KitaDao {
 	@PostFilter("hasPermission(filterObject, 'READ')")
 	@SuppressWarnings("unchecked")
 	public List<Kita> getKitasWithKinderForRead() {
-		return entityManager.createQuery("select distinct p from Kita p join fetch p.kinder").getResultList();
+		return entityManager.createQuery("select distinct p from Kita p left join fetch p.kinder").getResultList();
 	}
 
 	@PostFilter("hasPermission(filterObject, 'WRITE')")
 	@SuppressWarnings("unchecked")
 	public List<Kita> getKitasWithKinderForWrite() {
-		return entityManager.createQuery("select distinct p from Kita p join fetch p.kinder").getResultList();
+		return entityManager.createQuery("select distinct p from Kita p left join fetch p.kinder").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

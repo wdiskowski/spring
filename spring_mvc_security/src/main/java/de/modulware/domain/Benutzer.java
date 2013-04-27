@@ -37,8 +37,6 @@ public class Benutzer implements Serializable {
 	
 	private Role role;
 	
-	private String traeger;
-	
 	private transient Set<BenutzerKitaRecht> permissions;
 
 	@Id
@@ -96,15 +94,6 @@ public class Benutzer implements Serializable {
 		this.role = role;
 	}
 	
-	@Column
-	public String getTraeger() {
-		return traeger;
-	}
-
-	public void setTraeger(String traeger) {
-		this.traeger = traeger;
-	}
-
 	@OneToMany(mappedBy="benutzer", fetch=FetchType.EAGER)
 	public Set<BenutzerKitaRecht> getPermissions() {
 		return permissions;
