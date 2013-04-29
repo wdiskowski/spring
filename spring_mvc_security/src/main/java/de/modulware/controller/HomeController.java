@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Sample controller for going to the home page with a message2
+ * Sample controller for going to the home page with a message3
  */
 @Controller
 public class HomeController {
