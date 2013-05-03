@@ -27,7 +27,7 @@ public class TraegerFilter extends OncePerRequestFilter implements TraegerContex
 		traegerNameContainer.set(traegerName);
 		
 		HttpSession session = request.getSession();
-		String oldTraegerName = (String)session.getAttribute(TRAEGER_NAME_KEY);
+		String oldTraegerName = getOldTraegerName(session);
 		session.setAttribute(TRAEGER_NAME_KEY, traegerName);
 		if(oldTraegerName != null && !oldTraegerName.equals(traegerName)){
 			session.invalidate();
@@ -37,6 +37,11 @@ public class TraegerFilter extends OncePerRequestFilter implements TraegerContex
 		}finally{
 			traegerNameContainer.remove();
 		}
+	}
+
+	private String getOldTraegerName(HttpSession session) {
+		String oldTraegerName = (String)session.getAttribute(TRAEGER_NAME_KEY);
+		return oldTraegerName;
 	}
 	
 	private String getTraegerName(HttpServletRequest request) {
