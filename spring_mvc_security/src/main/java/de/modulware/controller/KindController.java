@@ -25,6 +25,8 @@ import de.modulware.domain.Kita;
 @RequestMapping("/kind/")
 public class KindController {
 	
+	private static final String VIEW_LIST = "list";
+
 	private static final String VIEW_EDIT = "edit";
 
 	private static final Logger logger = LoggerFactory.getLogger(KindController.class);
@@ -64,14 +66,14 @@ public class KindController {
 		
 	}
 	
-	@RequestMapping(method=RequestMethod.GET,value="list")
+	@RequestMapping(method=RequestMethod.GET,value=VIEW_LIST)
 	public ModelAndView listKinder() {
 		logger.debug("Received request to list kinds");
 		ModelAndView mav = new ModelAndView();
 		List<Kind> kinder = kindDao.getKinder();
 		logger.debug("Kind Listing count = "+kinder.size());
 		mav.addObject("kinder",kinder);
-		mav.setViewName("list");
+		mav.setViewName(VIEW_LIST);
 		return mav;
 		
 	}
