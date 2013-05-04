@@ -25,6 +25,8 @@ import de.modulware.domain.Kita;
 @RequestMapping("/kind/")
 public class KindController {
 	
+	private static final String VIEW_EDIT = "edit";
+
 	private static final Logger logger = LoggerFactory.getLogger(KindController.class);
 
 	@Autowired
@@ -37,11 +39,11 @@ public class KindController {
 	private KitaEditor kitaEditor;
 	
 	
-	@RequestMapping(method=RequestMethod.GET,value="edit")
+	@RequestMapping(method=RequestMethod.GET,value=VIEW_EDIT)
 	public ModelAndView editKind(@RequestParam(value="id",required=false) Long id) {		
 		logger.debug("Received request to edit kind id : "+id);				
 		ModelAndView mav = new ModelAndView();		
- 		mav.setViewName("edit");
+ 		mav.setViewName(VIEW_EDIT);
  		Kind kind = null;
  		if (id == null) {
  			kind = new Kind();
@@ -54,7 +56,7 @@ public class KindController {
 		
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,value="edit") 
+	@RequestMapping(method=RequestMethod.POST,value=VIEW_EDIT) 
 	public String saveKind(@ModelAttribute @Valid Kind kind) {
 		logger.debug("Received postback on kind "+kind);		
 		kindDao.save(kind);
