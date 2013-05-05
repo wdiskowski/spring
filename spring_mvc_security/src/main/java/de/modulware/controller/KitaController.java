@@ -17,13 +17,15 @@ import de.modulware.domain.Kita;
 @RequestMapping("/kita/")
 public class KitaController {
 	
+	private static final String VIEW_LIST = "list";
+
 	private static final Logger logger = LoggerFactory.getLogger(KitaController.class);
 
 	@Autowired
 	private KitaDao kitaDao;
 	
 	
-	@RequestMapping(method=RequestMethod.GET,value="list")
+	@RequestMapping(method=RequestMethod.GET,value=VIEW_LIST)
 	public ModelAndView listKitas() {
 		logger.debug("Received request to list kitas");
 		ModelAndView mav = new ModelAndView();
@@ -32,7 +34,7 @@ public class KitaController {
 		logger.debug("Kita Listing count = "+ (kitasForRead.size() + kitasForWrite.size()));
 		mav.addObject("kitasForRead", kitasForRead);
 		mav.addObject("kitasForWrite", kitasForWrite);
-		mav.setViewName("list");
+		mav.setViewName(VIEW_LIST);
 		return mav;
 		
 	}
